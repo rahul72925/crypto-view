@@ -8,6 +8,22 @@
 .neofi__currency_card_bg {
   z-index: -1;
 }
+
+.neofi__currency_card_current_image_container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: -1.25rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+  align-items: center;
+  background-color: #1c1731;
+  display: grid;
+  justify-content: center;
+}
 .neofi__currency_card_details {
   z-index: 10;
   width: calc(100vw - 7rem);
@@ -29,7 +45,17 @@
 
 .neofi__currency_card_selector {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 1fr 7fr 1fr;
+  height: 3.25rem;
+  align-items: center;
+  color: #ffffff;
+  background-color: #1c1731;
+  margin: 1rem 0;
+  border-radius: 0.6rem;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0 1rem;
+  cursor: pointer;
 }
 
 .neo__currency_card_amount_input {

@@ -4,3 +4,4 @@ export * from "./hamBurgerIcon";
 export * from "./currencyCardBg";
 export * from "./searchIcon";
 export * from "./checkIcon";
+export * from "./arrow";

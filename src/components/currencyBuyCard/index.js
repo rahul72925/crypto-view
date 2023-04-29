@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CurrencyCardBg } from "../../assets/svg";
+import { CurrencyCardBg, SolidDown } from "../../assets/svg";
 import styles from "./currencyBuyCard.module.css";
 import { Button } from "../button";
 import { currencyFormatter } from "../../utils";
@@ -28,8 +28,19 @@ const CurrencyCard = () => {
         style={{ position: "absolute" }}
         className={`neofi__currency_card_bg`}
       >
+        {currentToken && (
+          <div className={styles.neofi__currency_card_current_image_container}>
+            <img
+              src={currentToken.icon}
+              width={48}
+              height={48}
+              alt={currentToken.name}
+            />
+          </div>
+        )}
         <CurrencyCardBg />
       </div>
+
       <div className={styles.neofi__currency_card_details}>
         <div className={styles.neofi__currency_card_detail_group}>
           <span className={styles.neofi__currency_card_label}>
@@ -43,13 +54,23 @@ const CurrencyCard = () => {
           className={styles.neofi__currency_card_selector}
           onClick={handleDropDownClick}
         >
-          <div>
-            <span>0</span>
-            <span>Ethereum</span>
-          </div>
-          <div>
-            <span>{">"}</span>
-          </div>
+          {currentToken ? (
+            <>
+              <img
+                src={currentToken.icon}
+                width={24}
+                height={24}
+                alt={currentToken.name}
+              />
+              <span>{currentToken.name}</span>
+            </>
+          ) : (
+            <>
+              <span></span>
+              <span>Select currency...</span>
+            </>
+          )}
+          <SolidDown />
         </div>
         <div style={{ position: "relative" }}>
           <span className={styles.neofi__currency_card_label}>
