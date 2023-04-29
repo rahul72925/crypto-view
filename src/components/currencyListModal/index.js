@@ -1,54 +1,53 @@
+import React from "react";
 import { CheckIcon, CloseIcon, SearchIcon } from "../../assets/svg";
 import styles from "./currencyListModal.module.css";
 
-const CurrencySearchModal = ({
-  currentToken,
-  handleCurrencySelect,
-  handleClose,
-}) => {
-  return (
-    <div className={`${styles.neo__currency_list_modal_container}`}>
-      <div className={styles.neo__currency_opacity_bg}></div>
-      <div className={styles.neo__currency_list_modal_container_content}>
-        <div
-          className={styles.neo__currency_list_close_icon}
-          onClick={handleClose}
-        >
-          <CloseIcon fill="#DCDCEC" />
-        </div>
-        <div className={styles.neo__currency_search_container}>
-          <SearchIcon />
-          <input
-            placeholder="Search..."
-            className={styles.neo__currency_input}
-          />
-        </div>
-        <div className={styles.neo__currency_list}>
-          {cryptoArray.map((eachCrypto) => {
-            return (
-              <div
-                key={eachCrypto.id}
-                className={styles.neo__currency_list_item}
-                onClick={() => handleCurrencySelect(eachCrypto)}
-              >
-                <img
-                  src={eachCrypto.icon}
-                  width={24}
-                  height={24}
-                  alt={eachCrypto.name}
-                />
-                <span className={styles.neo__currency_name}>
-                  {eachCrypto.name}
-                </span>
-                {currentToken?.name == eachCrypto.name && <CheckIcon />}
-              </div>
-            );
-          })}
+const CurrencySearchModal = React.memo(
+  ({ currentToken, handleCurrencySelect, handleClose }) => {
+    return (
+      <div className={`${styles.neo__currency_list_modal_container}`}>
+        <div className={styles.neo__currency_opacity_bg}></div>
+        <div className={styles.neo__currency_list_modal_container_content}>
+          <div
+            className={styles.neo__currency_list_close_icon}
+            onClick={handleClose}
+          >
+            <CloseIcon fill="#DCDCEC" />
+          </div>
+          <div className={styles.neo__currency_search_container}>
+            <SearchIcon />
+            <input
+              placeholder="Search..."
+              className={styles.neo__currency_input}
+            />
+          </div>
+          <div className={styles.neo__currency_list}>
+            {cryptoArray.map((eachCrypto) => {
+              return (
+                <div
+                  key={eachCrypto.id}
+                  className={styles.neo__currency_list_item}
+                  onClick={() => handleCurrencySelect(eachCrypto)}
+                >
+                  <img
+                    src={eachCrypto.icon}
+                    width={24}
+                    height={24}
+                    alt={eachCrypto.name}
+                  />
+                  <span className={styles.neo__currency_name}>
+                    {eachCrypto.name}
+                  </span>
+                  {currentToken?.name == eachCrypto.name && <CheckIcon />}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
 
 export { CurrencySearchModal };
 

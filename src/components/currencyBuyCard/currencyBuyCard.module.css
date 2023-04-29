@@ -30,6 +30,10 @@
   height: 25rem;
 }
 
+.neofi__currency_card_details > div {
+  margin-bottom: 1.25rem;
+}
+
 .neofi__currency_card_detail_group {
   display: flex;
   justify-content: space-between;
@@ -50,7 +54,6 @@
   align-items: center;
   color: #ffffff;
   background-color: #1c1731;
-  margin: 1rem 0;
   border-radius: 0.6rem;
   font-size: 1rem;
   font-weight: 400;
@@ -61,7 +64,7 @@
 .neo__currency_card_amount_input {
   width: calc(100% - 1.1rem);
   height: 3.25rem;
-  margin: 0.875rem 0;
+  margin-top: 0.875rem;
   border: 1px solid #6e56f825;
   background-color: transparent;
   color: #6f6f7e;
@@ -70,6 +73,11 @@
   padding-left: 1rem;
   font-size: 1.4rem;
   font-weight: 600;
+}
+.neo__currency_card_amount_input::-webkit-outer-spin-button,
+.neo__currency_card_amount_input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .neo__currency_card_currency {
   color: white;
@@ -98,9 +106,12 @@
   font-size: 1.5rem;
 }
 @media screen and (max-width: 470px) {
-  .neofi__currency_card_container svg {
+  .neofi__currency_card_bg > svg {
     width: calc(100vw - 3rem) !important;
     height: 25rem;
+  }
+  .neofi__currency_card_details > div {
+    margin-bottom: 0.5rem;
   }
 }
 

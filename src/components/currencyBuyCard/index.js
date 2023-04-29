@@ -1,32 +1,41 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { CurrencyCardBg, SolidDown } from "../../assets/svg";
 import styles from "./currencyBuyCard.module.css";
 import { Button } from "../button";
 import { currencyFormatter } from "../../utils";
 import { CurrencySearchModal } from "../currencyListModal";
+import { LivePriceRenderer, useLivePrice } from "./livePriceRenderer";
 
 const CurrencyCard = () => {
   const [currentToken, setCurrentToken] = useState(null);
   const [showCurrencyListModal, setShowCurrencyListModal] = useState(false);
+  const [currentPrice, setCurrentPrice] = useState(0);
+  const [investAmount, setInvestAmount] = useState(0);
+  const [estimateCoins, setEstimateCoins] = useState(0);
 
-  const handleDropDownClick = () => {
+  const handleDropDownClick = useCallback(() => {
     setShowCurrencyListModal(true);
-  };
+  }, []);
 
-  const handleCurrencySelect = (data) => {
+  const handleCurrencySelect = useCallback((data) => {
     setShowCurrencyListModal(false);
     setCurrentToken(data);
-  };
+  }, []);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setShowCurrencyListModal(false);
+  }, []);
+
+  const handleEstimateAmount = (e) => {
+    const { value } = e.target;
+    setEstimateCoins(value / currentPrice);
   };
 
   return (
     <div className={styles.neofi__currency_card_container}>
       <div
         style={{ position: "absolute" }}
-        className={`neofi__currency_card_bg`}
+        className={styles.neofi__currency_card_bg}
       >
         {currentToken && (
           <div className={styles.neofi__currency_card_current_image_container}>
@@ -47,7 +56,15 @@ const CurrencyCard = () => {
             Current value
           </span>
           <span className={styles.neofi__currency_card_current_amount}>
-            {currencyFormatter(currentToken?.price || 0)}
+            {currentToken ? (
+              <LivePriceRenderer
+                currentTokenSymbol={currentToken.symbol}
+                currentPrice={currentPrice}
+                setCurrentPrice={setCurrentPrice}
+              />
+            ) : (
+              currencyFormatter(0)
+            )}
           </span>
         </div>
         <div
@@ -78,21 +95,24 @@ const CurrencyCard = () => {
           </span>{" "}
           <br />
           <input
-            className={styles.neo__currency_card_amount_input}
             placeholder="0.00"
+            className={styles.neo__currency_card_amount_input}
+            onChange={handleEstimateAmount}
+            type="number"
           />
           <span className={styles.neo__currency_card_currency}>INR</span>
         </div>
         <div>
           <span className={styles.neofi__currency_card_label}>
-            Estimate Number of ETH You will Get
+            Estimate Number of {currentToken ? currentToken.symbol : "Coin(s)"}{" "}
+            You will Get
           </span>
           <br />
           <div className={styles.neofi__currency_card_estimate_token}>
-            <span>0.00</span>
+            <span>{parseFloat(estimateCoins)}</span>
           </div>
         </div>
-        <div>
+        <div style={{ marginTop: "3rem" }}>
           <Button style={{ width: "100%" }}>Buy</Button>
         </div>
       </div>
