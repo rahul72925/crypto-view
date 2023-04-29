@@ -3,9 +3,24 @@ import { CurrencyCardBg } from "../../assets/svg";
 import styles from "./currencyBuyCard.module.css";
 import { Button } from "../button";
 import { currencyFormatter } from "../../utils";
+import { CurrencySearchModal } from "../currencyListModal";
 
 const CurrencyCard = () => {
   const [currentToken, setCurrentToken] = useState(null);
+  const [showCurrencyListModal, setShowCurrencyListModal] = useState(false);
+
+  const handleDropDownClick = () => {
+    setShowCurrencyListModal(true);
+  };
+
+  const handleCurrencySelect = (data) => {
+    setShowCurrencyListModal(false);
+    setCurrentToken(data);
+  };
+
+  const handleClose = () => {
+    setShowCurrencyListModal(false);
+  };
 
   return (
     <div className={styles.neofi__currency_card_container}>
@@ -23,6 +38,18 @@ const CurrencyCard = () => {
           <span className={styles.neofi__currency_card_current_amount}>
             {currencyFormatter(currentToken?.price || 0)}
           </span>
+        </div>
+        <div
+          className={styles.neofi__currency_card_selector}
+          onClick={handleDropDownClick}
+        >
+          <div>
+            <span>0</span>
+            <span>Ethereum</span>
+          </div>
+          <div>
+            <span>{">"}</span>
+          </div>
         </div>
         <div style={{ position: "relative" }}>
           <span className={styles.neofi__currency_card_label}>
@@ -48,6 +75,13 @@ const CurrencyCard = () => {
           <Button style={{ width: "100%" }}>Buy</Button>
         </div>
       </div>
+      {showCurrencyListModal && (
+        <CurrencySearchModal
+          currentToken={currentToken}
+          handleCurrencySelect={handleCurrencySelect}
+          handleClose={handleClose}
+        />
+      )}
     </div>
   );
 };
