@@ -112,7 +112,7 @@ const CurrencyCard = () => {
             <span>{parseFloat(estimateCoins)}</span>
           </div>
         </div>
-        <div style={{ marginTop: "3rem" }}>
+        <div className={styles.neo__currency_card_buy_btn}>
           <Button style={{ width: "100%" }}>Buy</Button>
         </div>
       </div>

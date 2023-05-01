@@ -105,10 +105,14 @@
   font-weight: 600;
   font-size: 1.5rem;
 }
+
+.neo__currency_card_buy_btn {
+  margin-top: 3rem;
+}
 @media screen and (max-width: 470px) {
   .neofi__currency_card_bg > svg {
     width: calc(100vw - 3rem) !important;
-    height: 25rem;
+    /* height: 40vh !important; */
   }
   .neofi__currency_card_details > div {
     margin-bottom: 0.5rem;
@@ -120,5 +124,19 @@
     z-index: 10;
     width: 25rem;
     height: 26rem;
+  }
+}
+@media screen and (max-width: 470px) {
+  .neofi__currency_card_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .neo__currency_card_buy_btn {
+    margin-top: 0.5rem;
+  }
+  .neofi__currency_card_selector {
+    grid-template-columns: 1fr 5fr 1fr;
+    padding-right: 0;
   }
 }

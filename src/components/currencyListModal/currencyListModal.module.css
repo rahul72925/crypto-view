@@ -93,3 +93,13 @@
   font-weight: 400;
   color: #ffffff;
 }
+
+@media screen and (max-width: 467px) {
+  .neo__currency_list_modal_container_content {
+    margin: 0 1rem;
+    padding: 3.5rem 1rem;
+  }
+  .neo__currency_list_item {
+    grid-template-columns: 1fr 5fr 1fr;
+  }
+}
