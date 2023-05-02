@@ -10,14 +10,14 @@ const CurrencyCardBg = (props) => (
   >
     <mask id="path-1-inside-1_10_97" fill="white">
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M234.502 52C256.593 52 274.502 34.0914 274.502 12V12C274.502 5.95962 278.816 0 284.857 0H452C461.941 0 470 8.05888 470 18V549C470 558.941 461.941 567 452 567H18C8.05888 567 0 558.941 0 549V18C0 8.05887 8.05887 0 18 0H184.147C190.188 0 194.502 5.95962 194.502 12V12C194.502 34.0914 212.411 52 234.502 52Z"
       />
     </mask>
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M234.502 52C256.593 52 274.502 34.0914 274.502 12V12C274.502 5.95962 278.816 0 284.857 0H452C461.941 0 470 8.05888 470 18V549C470 558.941 461.941 567 452 567H18C8.05888 567 0 558.941 0 549V18C0 8.05887 8.05887 0 18 0H184.147C190.188 0 194.502 5.95962 194.502 12V12C194.502 34.0914 212.411 52 234.502 52Z"
       fill="#0B0819"
     />
@@ -35,8 +35,8 @@ const CurrencyCardBg = (props) => (
         y2="567"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#46425E" />
-        <stop offset="1" stop-opacity="0" />
+        <stop stopColor="#46425E" />
+        <stop offset="1" stopOpacity="0" />
       </linearGradient>
     </defs>
   </svg>
